@@ -32,7 +32,6 @@ export async function getStaticProps() {
   const posts = await fetchData(
     'https://jsonplaceholder.typicode.com/todos?_limit=15'
   )
-  console.log(posts)
   return {
     props: {
       posts,

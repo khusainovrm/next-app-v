@@ -20,7 +20,11 @@ export default function Home({ posts }) {
       <ul className={'list-disc mt-2'}>
         {' '}
         {posts.map(({ id, title }) => (
-          <li key={id}>{title}</li>
+          <Link href={`/posts/${id}`} key={id}>
+            <a>
+              <li>{title}</li>
+            </a>
+          </Link>
         ))}
       </ul>
     </Layout>
@@ -29,7 +33,6 @@ export default function Home({ posts }) {
 
 export async function getServerSideProps(context) {
   const posts = await fetchData(`${process.env.JP_URL}todos?_limit=15`)
-  console.log(posts)
   return {
     props: {
       posts,
