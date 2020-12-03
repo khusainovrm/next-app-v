@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
 import { fetchData } from '../../lib/fetchData'
+import { GetStaticProps } from 'next'
 
 export default function FirstPost({ posts }) {
   return (
@@ -28,7 +29,7 @@ export default function FirstPost({ posts }) {
   )
 }
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const posts = await fetchData(
     'https://jsonplaceholder.typicode.com/todos?_limit=15'
   )

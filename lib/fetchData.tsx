@@ -1,8 +1,8 @@
 export async function fetchData(
-  url,
-  method = 'GET',
+  url: string,
+  method: string = 'GET',
   body = null,
-  headers = {}
+  headers: {} = {}
 ) {
   try {
     if (body) {
