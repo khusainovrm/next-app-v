@@ -4,7 +4,6 @@ import Layout from '../../components/layout'
 import Head from 'next/head'
 import { GetStaticProps, GetStaticPaths } from 'next'
 import { useRouter } from 'next/router'
-import { fetchData } from '../../lib/fetchData'
 
 export default function Post({
   postData,

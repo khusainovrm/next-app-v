@@ -44,7 +44,7 @@ export default function Home({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const posts = await fetchData(`${process.env.JP_URL}todos?_limit=15`)
   return {
     props: {
