@@ -3,8 +3,16 @@ import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import { fetchData } from '../lib/fetchData'
+import { GetServerSideProps } from 'next'
 
-export default function Home({ posts }) {
+export default function Home({
+  posts,
+}: {
+  posts: {
+    id: string
+    title: string
+  }[]
+}) {
   return (
     <Layout home>
       <Head>
@@ -31,7 +39,7 @@ export default function Home({ posts }) {
   )
 }
 
-export async function getServerSideProps(context) {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const posts = await fetchData(`${process.env.JP_URL}todos?_limit=15`)
   return {
     props: {
