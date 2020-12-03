@@ -2,8 +2,9 @@ import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
+import { getPostsData } from '../lib/getPostsData'
 
-export default function Home() {
+export default function Home({ posts }) {
   return (
     <Layout home>
       <Head>
@@ -13,9 +14,27 @@ export default function Home() {
         <p>My next app first application</p>
         <p>This is a sample website</p>
         <Link href={'/posts/first-post'}>
-          <a>Go to first post</a>
+          <a className={'text-xs hover:text-green-500'}>Go to first post</a>
         </Link>
       </section>
+      <ul>
+        {' '}
+        {posts.map(({ id, title }) => (
+          <li key={id}>{title}</li>
+        ))}
+      </ul>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+  const posts = await getPostsData(
+    'https://jsonplaceholder.typicode.com/todos?_limit=15'
+  )
+  console.log(posts)
+  return {
+    props: {
+      posts,
+    },
+  }
 }
