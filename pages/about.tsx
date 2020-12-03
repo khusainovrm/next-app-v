@@ -8,7 +8,10 @@ export default function About() {
   return (
     <>
       <Layout>
-        <button onClick={clickHandler} className={style.button}>
+        <button
+          onClick={clickHandler}
+          className={`${style.button} text-xs py-2`}
+        >
           Go Home
         </button>
       </Layout>
