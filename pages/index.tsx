@@ -24,6 +24,11 @@ export default function Home({
         <Link href={'/posts/first-post'}>
           <a className={'text-xs hover:text-green-500'}>Go to first post</a>
         </Link>
+        <Link href={'/about'}>
+          <a className={'ml-2 text-xs hover:text-green-500'}>
+            Go to about page
+          </a>
+        </Link>
       </section>
       <ul className={'list-disc mt-2'}>
         {' '}
