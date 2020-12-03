@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { fetchData } from '../lib/fetchData'
 
 export default function Home({ posts }) {
+  console.log(process.env.CORE_URL)
   return (
     <Layout home>
       <Head>
