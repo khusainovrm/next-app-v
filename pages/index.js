@@ -5,7 +5,6 @@ import Link from 'next/link'
 import { fetchData } from '../lib/fetchData'
 
 export default function Home({ posts }) {
-  console.log(process.env.CORE_URL)
   return (
     <Layout home>
       <Head>
@@ -29,9 +28,7 @@ export default function Home({ posts }) {
 }
 
 export async function getServerSideProps(context) {
-  const posts = await fetchData(
-    'https://jsonplaceholder.typicode.com/todos?_limit=15'
-  )
+  const posts = await fetchData(`${process.env.JP_URL}todos?_limit=15`)
   console.log(posts)
   return {
     props: {

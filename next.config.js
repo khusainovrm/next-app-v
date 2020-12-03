@@ -16,6 +16,7 @@ module.exports = (phase) => {
         return 'https://next-app-v.vercel.app/'
       }
     })(),
+    JP_URL: 'https://jsonplaceholder.typicode.com/',
   }
 
   return {
