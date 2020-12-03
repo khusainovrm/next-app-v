@@ -3,6 +3,7 @@ import { getPostById } from '../../lib/getPostById'
 import Layout from '../../components/layout'
 import Head from 'next/head'
 import { GetStaticProps, GetStaticPaths } from 'next'
+import { useRouter } from 'next/router'
 
 export default function Post({
   postData,
@@ -12,6 +13,8 @@ export default function Post({
     id: string
   }
 }) {
+  const router = useRouter()
+  console.log(router)
   return (
     <Layout>
       <Head>
@@ -19,6 +22,7 @@ export default function Post({
       </Head>
       <div>title: {postData.title}</div>
       <div>ID: {postData.id}</div>
+      <div>Router query id: {router.query.id}</div>
     </Layout>
   )
 }
