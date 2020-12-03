@@ -1,4 +1,4 @@
-import style from '../components/about.module.css'
+import style from '../components/about.module.scss'
 import Layout from '../components/layout'
 import { useRouter } from 'next/router'
 

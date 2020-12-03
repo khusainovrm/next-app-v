@@ -9,16 +9,16 @@
     background-color: transparent;
     background-image: none;
     transition-duration: 150ms;
-}
 
-.button:hover {
-    color: darkorange;
-}
+    &:hover {
+        color: darkorange;
+    }
 
-.button:focus {
-    outline: none;
-}
-.button:active {
-    box-shadow: none;
-}
+    &:focus {
+        outline: none;
+    }
 
+    &:active {
+        box-shadow: none;
+    }
+}
