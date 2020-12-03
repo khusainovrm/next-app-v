@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
 import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
-import { getPostsData } from '../lib/getPostsData'
+import { fetchData } from '../lib/fetchData'
 
 export default function Home({ posts }) {
   return (
@@ -17,7 +17,7 @@ export default function Home({ posts }) {
           <a className={'text-xs hover:text-green-500'}>Go to first post</a>
         </Link>
       </section>
-      <ul>
+      <ul className={'list-disc mt-2'}>
         {' '}
         {posts.map(({ id, title }) => (
           <li key={id}>{title}</li>
@@ -27,8 +27,8 @@ export default function Home({ posts }) {
   )
 }
 
-export async function getStaticProps() {
-  const posts = await getPostsData(
+export async function getServerSideProps(context) {
+  const posts = await fetchData(
     'https://jsonplaceholder.typicode.com/todos?_limit=15'
   )
   console.log(posts)

@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import Head from 'next/head'
 import Layout from '../../components/layout'
+import { fetchData } from '../../lib/fetchData'
 
-export default function FirstPost() {
+export default function FirstPost({ posts }) {
   return (
     <>
       <Layout>
@@ -15,7 +16,26 @@ export default function FirstPost() {
             <a>Back to home</a>
           </Link>
         </h2>
+
+        <ul className={'list-disc mt-2'}>
+          {' '}
+          {posts.map(({ id, title }) => (
+            <li key={id}>{title}</li>
+          ))}
+        </ul>
       </Layout>
     </>
   )
+}
+
+export async function getStaticProps() {
+  const posts = await fetchData(
+    'https://jsonplaceholder.typicode.com/todos?_limit=15'
+  )
+  console.log(posts)
+  return {
+    props: {
+      posts,
+    },
+  }
 }
