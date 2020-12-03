@@ -14,7 +14,6 @@ export default function Post({
   }
 }) {
   const router = useRouter()
-  console.log(router)
   return (
     <Layout>
       <Head>
