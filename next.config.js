@@ -11,12 +11,10 @@ module.exports = (phase) => {
 
   const env = {
     CORE_URL: (() => {
-      if (isDev) return 'http://localhost:3000/'
-      if (isProd) {
-        return 'https://next-app-v.vercel.app/'
-      }
+      if (isDev) return process.env.DEV_URL
+      if (isProd) return process.env.PROD_URL
     })(),
-    JP_URL: 'https://jsonplaceholder.typicode.com/',
+    JP_URL: process.env.JP_URL,
   }
 
   return {
