@@ -1,3 +1,5 @@
+require('isomorphic-fetch')
+
 export async function fetchData(
   url: string,
   method: string = 'GET',
