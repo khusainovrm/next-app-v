@@ -4,15 +4,13 @@ import utilStyles from '../styles/utils.module.css'
 import Link from 'next/link'
 import { fetchData } from '../lib/fetchData'
 import { GetServerSideProps } from 'next'
+import { MyPost } from '../interfaces/post'
 
-export default function Home({
-  posts,
-}: {
-  posts: {
-    id: string
-    title: string
-  }[]
-}) {
+interface MyPostsProps {
+  posts: MyPost[]
+}
+
+export default function Home({ posts }: MyPostsProps) {
   return (
     <Layout home>
       <Head>
@@ -45,7 +43,9 @@ export default function Home({
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const posts = await fetchData(`${process.env.JP_URL}todos?_limit=15`)
+  const posts: MyPost[] = await fetchData(
+    `${process.env.JP_URL}todos?_limit=15`
+  )
   return {
     props: {
       posts,

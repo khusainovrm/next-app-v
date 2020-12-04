@@ -2,17 +2,15 @@ import { getAllPostIds } from '../../lib/getAllPostIds'
 import { getPostById } from '../../lib/getPostById'
 import Layout from '../../components/layout'
 import Head from 'next/head'
-import { GetStaticProps, GetStaticPaths } from 'next'
+import { GetStaticProps, GetStaticPaths, NextPageContext } from 'next'
 import { useRouter } from 'next/router'
+import { MyPost } from '../../interfaces/post'
 
-export default function Post({
-  postData,
-}: {
-  postData: {
-    title: string
-    id: string
-  }
-}) {
+interface MyPostDataProps {
+  postData: MyPost
+}
+
+export default function Post({ postData }: MyPostDataProps) {
   const router = useRouter()
 
   return (
@@ -35,7 +33,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const postData = await getPostById(params.id as string)
+  const postData: MyPost = await getPostById(params.id as string)
   return {
     props: {
       postData,
